@@ -1,0 +1,24 @@
+package com.cloudprinter.dto;
+
+import java.util.ArrayList;
+
+public class ValidationErrors {
+
+	String status;
+	ArrayList<String> errors;
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public ArrayList<String> getErrors() {
+		return errors;
+	}
+	public void setErrors(ArrayList<String> errors) {
+		this.errors = errors;
+	}
+	
+	
+
+}

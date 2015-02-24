@@ -13,9 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cloudprinter.dto.RegistrationStatus;
 import com.cloudprinter.dto.UserInfo;
+import com.cloudprinter.dto.ValidationErrors;
 import com.cloudprinter.exceptions.RegistrationException;
 import com.cloudprinter.services.AuthenticateUserService;
 import com.cloudprinter.services.RegistrationService;
+import com.cloudprinter.validations.Validations;
 
 @SuppressWarnings("serial")
 public class RegisterUser extends HttpServlet {
@@ -127,31 +129,63 @@ public class RegisterUser extends HttpServlet {
 		setUserDesignation(req.getParameter("userDesignation"));
 		setUserName(req.getParameter("userName"));
 		setUserWorkLocation(req.getParameter("userWorkLocation"));
+		Validations v = new Validations();
+		ValidationErrors validationErrors = v.validateUserRegistration(
+				getLoginId(), getEmailId(), getUserName(), getAge(),
+				getGender(), getUserDesignation(), getUserWorkLocation(),
+				getContactNo(), getAlternateEmailId());
+		if (validationErrors.getStatus().equals("null"))
 
-		AuthenticateUserService authenticateUser = new AuthenticateUserService();
-		String userStatus = authenticateUser.authenticateUserEmailId(
-				getLoginId(), getEmailId());
-		if (userStatus.matches("not_exist")) {
-			try {
-				RegistrationService register = new RegistrationService();
-				log.info("Registration Service Created...");
-				UserInfo userInfo = new UserInfo();
-				userInfo.setAge(getAge());
-				userInfo.setAlternateEmail(getAlternateEmailId());
-				userInfo.setContactNumber(getContactNo());
-				userInfo.setEmailId(getEmailId());
-				userInfo.setGender(getGender());
-				userInfo.setLoginId(getLoginId());
-				userInfo.setUserDesignation(getUserDesignation());
-				userInfo.setUserName(getUserName());
-				userInfo.setUserWorkLocation(getUserWorkLocation());
+		{
+			AuthenticateUserService authenticateUser = new AuthenticateUserService();
+			String userStatus = authenticateUser.authenticateUserEmailId(
+					getLoginId(), getEmailId());
+			if (userStatus.matches("not_exist")) {
+				try {
+					RegistrationService register = new RegistrationService();
+					log.info("Registration Service Created...");
+					UserInfo userInfo = new UserInfo();
+					userInfo.setAge(getAge());
+					userInfo.setAlternateEmail(getAlternateEmailId());
+					userInfo.setContactNumber(getContactNo());
+					userInfo.setEmailId(getEmailId());
+					userInfo.setGender(getGender());
+					userInfo.setLoginId(getLoginId());
+					userInfo.setUserDesignation(getUserDesignation());
+					userInfo.setUserName(getUserName());
+					userInfo.setUserWorkLocation(getUserWorkLocation());
 
-				RegistrationStatus registrationStatus = register
-						.registerUser(userInfo);
-				if (registrationStatus.getStatus().equals("registered")) {
-					log.info("User Registered Successfully");
-					setRegistrationError("User Successfully registered...");
-					setRegistrationStatus("success");
+					RegistrationStatus registrationStatus = register
+							.registerUser(userInfo);
+					if (registrationStatus.getStatus().equals("registered")) {
+						log.info("User Registered Successfully");
+						setRegistrationError("User Successfully registered...");
+						setRegistrationStatus("success");
+						req.setAttribute("registrationError",
+								getRegistrationError());
+						req.setAttribute("registrationStatus",
+								getRegistrationStatus());
+						RequestDispatcher rd = req
+								.getRequestDispatcher("/registerUser.jsp");
+						rd.forward(req, resp);
+					} else {
+						setRegistrationStatus("failure");
+						setRegistrationError("User Not Registered...due to some error :"
+								+ registrationStatus.getErrors().get(0));
+						log.info("User Registration Error...");
+						req.setAttribute("registrationError",
+								getRegistrationError());
+						req.setAttribute("registrationStatus",
+								getRegistrationStatus());
+						RequestDispatcher rd = req
+								.getRequestDispatcher("/registerUser.jsp");
+						rd.forward(req, resp);
+					}
+				} catch (RegistrationException e) {
+					log.info("User Registration Error due to registration exception..");
+					setRegistrationError("INVALID CREDENTIALS..."
+							+ e.getMessage());
+					setRegistrationStatus("failure");
 					req.setAttribute("registrationError",
 							getRegistrationError());
 					req.setAttribute("registrationStatus",
@@ -159,11 +193,32 @@ public class RegisterUser extends HttpServlet {
 					RequestDispatcher rd = req
 							.getRequestDispatcher("/registerUser.jsp");
 					rd.forward(req, resp);
-				} else {
+				} catch (UnsupportedEncodingException e) {
+					log.info("Unsupported Encoding Exception supported..");
+					setRegistrationError("Unsupported Encoding Exception supported..");
 					setRegistrationStatus("failure");
-					setRegistrationError("User Not Registered...due to some error :"
-							+ registrationStatus.getErrors().get(0));
-					log.info("User Registration Error...");
+					req.setAttribute("registrationError",
+							getRegistrationError());
+					req.setAttribute("registrationStatus",
+							getRegistrationStatus());
+					RequestDispatcher rd = req
+							.getRequestDispatcher("/registerUser.jsp");
+					rd.forward(req, resp);
+				} catch (MessagingException e) {
+					log.info("Messaging Exception..");
+					setRegistrationError("Messaging Exception..");
+					setRegistrationStatus("failure");
+					req.setAttribute("registrationError",
+							getRegistrationError());
+					req.setAttribute("registrationStatus",
+							getRegistrationStatus());
+					RequestDispatcher rd = req
+							.getRequestDispatcher("/registerUser.jsp");
+					rd.forward(req, resp);
+				} catch (Exception e) {
+					log.info("Exception occured while registering :" + e);
+					setRegistrationError("Some Error occured , try after some time :-(");
+					setRegistrationStatus("failure");
 					req.setAttribute("registrationError",
 							getRegistrationError());
 					req.setAttribute("registrationStatus",
@@ -172,36 +227,9 @@ public class RegisterUser extends HttpServlet {
 							.getRequestDispatcher("/registerUser.jsp");
 					rd.forward(req, resp);
 				}
-			} catch (RegistrationException e) {
-				log.info("User Registration Error due to registration exception..");
-				setRegistrationError("INVALID CREDENTIALS..." + e.getMessage());
-				setRegistrationStatus("failure");
-				req.setAttribute("registrationError", getRegistrationError());
-				req.setAttribute("registrationStatus", getRegistrationStatus());
-				RequestDispatcher rd = req
-						.getRequestDispatcher("/registerUser.jsp");
-				rd.forward(req, resp);
-			} catch (UnsupportedEncodingException e) {
-				log.info("Unsupported Encoding Exception supported..");
-				setRegistrationError("Unsupported Encoding Exception supported..");
-				setRegistrationStatus("failure");
-				req.setAttribute("registrationError", getRegistrationError());
-				req.setAttribute("registrationStatus", getRegistrationStatus());
-				RequestDispatcher rd = req
-						.getRequestDispatcher("/registerUser.jsp");
-				rd.forward(req, resp);
-			} catch (MessagingException e) {
-				log.info("Messaging Exception..");
-				setRegistrationError("Messaging Exception..");
-				setRegistrationStatus("failure");
-				req.setAttribute("registrationError", getRegistrationError());
-				req.setAttribute("registrationStatus", getRegistrationStatus());
-				RequestDispatcher rd = req
-						.getRequestDispatcher("/registerUser.jsp");
-				rd.forward(req, resp);
-			} catch (Exception e) {
-				log.info("Exception occured while registering :" + e);
-				setRegistrationError("Some Error occured , try after some time :-(");
+
+			} else {
+				setRegistrationError("USER ALREADY EXIST WITH CORRESPONDING EMAIL-ID...");
 				setRegistrationStatus("failure");
 				req.setAttribute("registrationError", getRegistrationError());
 				req.setAttribute("registrationStatus", getRegistrationStatus());
@@ -209,9 +237,10 @@ public class RegisterUser extends HttpServlet {
 						.getRequestDispatcher("/registerUser.jsp");
 				rd.forward(req, resp);
 			}
-
 		} else {
-			setRegistrationError("USER ALREADY EXIST WITH CORRESPONDING EMAIL-ID...");
+			for (String e : validationErrors.getErrors()) {
+				setRegistrationError(e + "\n");
+			}
 			setRegistrationStatus("failure");
 			req.setAttribute("registrationError", getRegistrationError());
 			req.setAttribute("registrationStatus", getRegistrationStatus());
@@ -220,5 +249,4 @@ public class RegisterUser extends HttpServlet {
 			rd.forward(req, resp);
 		}
 	}
-
 }

@@ -12,3 +12,4 @@ public class DeletedFiles {
 	String fileDeletionStatus;
 
 }
+

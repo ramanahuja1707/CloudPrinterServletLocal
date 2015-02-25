@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.cloudprinter.dto.UploadedFilesInfo;
 import com.cloudprinter.dto.UserInfo;
 import com.cloudprinter.dto.UserLoginInfo;
 import com.googlecode.objectify.Objectify;
@@ -20,6 +21,7 @@ public class ObjectifyRegisterService extends HttpServlet {
 	static {
 		ObjectifyService.register(UserInfo.class);
 		ObjectifyService.register(UserLoginInfo.class);
+		ObjectifyService.register(UploadedFilesInfo.class);
 	}
 
 	public static Objectify registerService() {

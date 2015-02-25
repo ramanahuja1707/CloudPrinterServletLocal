@@ -7,6 +7,7 @@
 <title>Cloud Printer HMRITM</title>
 </head>
 <body>
+
 	<%
 		if (session.getAttribute("emailId") == null
 				&& session.getAttribute("password") == null
@@ -18,6 +19,9 @@
 	%>
 	Login Successfully !!!
 
+	<br>
+	<br>
+	<a href="uploadFiles.jsp">Upload Files</a>
 
 	<br>
 	<br>

@@ -37,7 +37,7 @@
 				name="userWorkLocation" /><br> <br> User Email-Id :<input
 				type="text" name="emailId" /><br> <br> User Alternate
 			Email-Id :<input type="text" name="alternateEmailId" /><br> <br>
-			User Contact No. :<input type="text" value="Male" name="contactNo" /><br>
+			User Contact No. :<input type="text"  name="contactNo" /><br>
 			<br> <input type="submit" value="Register" />
 		</form>
 	</center>

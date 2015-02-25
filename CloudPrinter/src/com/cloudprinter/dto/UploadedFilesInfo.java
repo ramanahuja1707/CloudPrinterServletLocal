@@ -7,10 +7,14 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.cloudprinter.enums.FileType;
+import com.cloudprinter.enums.UploadStatus;
+
 @Entity
 public class UploadedFilesInfo {
-	@Id
+
 	String fileKey;
+	@Id
 	String fileId; // filename+date
 	String loginId; // foreign key
 	String fileName;
@@ -18,9 +22,20 @@ public class UploadedFilesInfo {
 	@Temporal(TemporalType.DATE)
 	Date dateOfUploading;
 	String ipAddressOfHost;
-	String uploadStatus;
+	UploadStatus uploadStatus;
 	String uploadError;
-	String fileType;
+	FileType fileType;
+	
+
+	private String contentType;
+
+	public String getContentType() {
+		return contentType;
+	}
+
+	public void setContentType(String contentType) {
+		this.contentType = contentType;
+	}
 
 	public String getFileKey() {
 		return fileKey;
@@ -78,11 +93,11 @@ public class UploadedFilesInfo {
 		this.ipAddressOfHost = ipAddressOfHost;
 	}
 
-	public String getUploadStatus() {
+	public UploadStatus getUploadStatus() {
 		return uploadStatus;
 	}
 
-	public void setUploadStatus(String uploadStatus) {
+	public void setUploadStatus(UploadStatus uploadStatus) {
 		this.uploadStatus = uploadStatus;
 	}
 
@@ -94,11 +109,11 @@ public class UploadedFilesInfo {
 		this.uploadError = uploadError;
 	}
 
-	public String getFileType() {
+	public FileType getFileType() {
 		return fileType;
 	}
 
-	public void setFileType(String fileType) {
+	public void setFileType(FileType fileType) {
 		this.fileType = fileType;
 	}
 

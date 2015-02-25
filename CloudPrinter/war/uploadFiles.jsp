@@ -34,7 +34,8 @@
 				value="Submit">
 		</form>
 		
-		
+		<br><br>
+		<a href="/userHome.jsp">Go Back</a>
 	</center>
 </body>
 </html>

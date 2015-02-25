@@ -1,0 +1,63 @@
+@charset "utf-8";
+body {
+	background-color: #84d7fd;
+	width:100%;
+	margin:auto;
+	
+	padding:0px;
+	text-align:center;
+}
+h1{
+	font-family:Tw Cen MT;
+	font-size:34px;
+	color:#84d7fd;
+	padding:0px;
+	margin:0px;
+	font-weight:normal;
+	margin-top:69px;
+}
+p{
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:11px;
+	color:#000;
+	text-align:justify;
+	margin:14px;
+}
+.banner{
+	width:100%; height:auto; float:left;}
+	
+img.logo{
+	float:left; margin-left:18%; margin-top:1%;
+}
+.bannertext{
+	font-family:Tw Cen MT; font-size:36px; color:#fff; float:left; margin-top:2%; margin-left:1%;
+}
+.menu{
+	width:77px; height:80px; float:left; margin-left:14%; margin-top:15px; font-family:verdana; font-size:12px; font-weight:bold; color:#fff; background-repeat:no-repeat;
+}
+.main{
+	width:697px; height:auto; float:left; margin-left:15%; margin-top:5%;
+}
+.login{
+	width:209px; height:auto; float:left;
+}
+.loginbg{
+	background-image:url(images/loginbg.gif);  width:219px; margin-left:-100px; height:107px; float:left;
+}
+.loginbox{
+	width:180px; margin-left:-75px; height:430px; float:left; background-color:#ebebeb;
+}
+.name{
+	width:91%; font-family:Verdana, Geneva, sans-serif; color:#6d7676; font-style:italic; font-size:12px; text-align:left; margin-left:10px; margin-top:15px; float:left; 
+}
+.submit_btn{
+	width:91%; margin-left:15px; float:left; text-align:left; margin-top:25px; margin-bottom:5px;
+}
+.forgot_pss{
+	width:75%; margin-left:15px; text-align:left; float:left; font-family:Verdana, Geneva, sans-serif; font-size:10px; text-decoration:underline; color:#6d7676;
+}
+.main2{
+	width:45%;  text-align:right; float:left;width:61%; font-family:Verdana, Geneva, sans-serif; font-size:10px; text-decoration:underline; color:#6d7676;
+}
+.maincontent_bg{
+background-image:url(images/contentbg.gif);  width:433px;  height:120px; float:left;}

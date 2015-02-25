@@ -8,6 +8,9 @@
 </head>
 <body>
 	<h1>Cloud Printer HMRITM</h1>
-	<a href="objectifystart"><input type="button" value="Login" /></a>
+	<%
+		response.sendRedirect("/objectifystart");
+	%>
+
 </body>
 </html>

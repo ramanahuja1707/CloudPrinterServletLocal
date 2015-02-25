@@ -1,6 +1,7 @@
 package com.cloudprinter.startup;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,7 +18,8 @@ import com.googlecode.objectify.ObjectifyService;
 
 @SuppressWarnings("serial")
 public class ObjectifyRegisterService extends HttpServlet {
-
+	private static final Logger log = Logger
+			.getLogger(ObjectifyRegisterService.class.getName());
 	static {
 		ObjectifyService.register(UserInfo.class);
 		ObjectifyService.register(UserLoginInfo.class);

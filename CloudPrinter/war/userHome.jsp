@@ -22,7 +22,12 @@
 	<br>
 	<br>
 	<a href="uploadFiles.jsp">Upload Files</a>
-
+	<br>
+	<br>
+	<a href="getallfiles">All Files</a>
+	<br>
+	<br>
+	<a href="changePassword.jsp">Change Password</a>
 	<br>
 	<br>
 	<a href="logout">Logout</a>

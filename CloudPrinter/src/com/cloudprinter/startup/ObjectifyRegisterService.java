@@ -21,6 +21,7 @@ public class ObjectifyRegisterService extends HttpServlet {
 	private static final Logger log = Logger
 			.getLogger(ObjectifyRegisterService.class.getName());
 	static {
+		log.info("objectify service started");
 		ObjectifyService.register(UserInfo.class);
 		ObjectifyService.register(UserLoginInfo.class);
 		ObjectifyService.register(UploadedFilesInfo.class);

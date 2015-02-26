@@ -66,8 +66,8 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	</servlet-mapping>
 
 
-	
-		<servlet>
+
+	<servlet>
 		<servlet-name>UploadFile</servlet-name>
 		<servlet-class>com.cloudprinter.servlet.UploadFile</servlet-class>
 	</servlet>
@@ -75,6 +75,47 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>UploadFile</servlet-name>
 		<url-pattern>/uploadfile</url-pattern>
 	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>GetAllFiles</servlet-name>
+		<servlet-class>com.cloudprinter.servlet.GetAllFiles</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetAllFiles</servlet-name>
+		<url-pattern>/getallfiles</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>PrintFile</servlet-name>
+		<servlet-class>com.cloudprinter.servlet.PrintFile</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PrintFile</servlet-name>
+		<url-pattern>/printfile</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>DownloadFile</servlet-name>
+		<servlet-class>com.cloudprinter.servlet.DownloadFile</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DownloadFile</servlet-name>
+		<url-pattern>/downloadfile</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>ChangePassword</servlet-name>
+		<servlet-class>com.cloudprinter.servlet.ChangePassword</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ChangePassword</servlet-name>
+		<url-pattern>/changepassword</url-pattern>
+	</servlet-mapping>
+
 	
 	
 	

@@ -5,25 +5,30 @@
 <html>
 <head>
 <style>
-#filetable {
-	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-	width: 50%;
-	border-collapse: collapse;
+#fileTable {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    width: 100%;
+    border-collapse: collapse;
 }
 
-#filetable td,#filetable th {
-	font-size: 1em;
-	border: 1px solid #98bf21;
-	padding: 3px 7px 2px 7px;
+#fileTable td, #customers th {
+    font-size: 1em;
+    border: 1px solid #99ccff;
+    padding: 3px 7px 2px 7px;
 }
 
-#filetable th {
-	font-size: 1.1em;
-	text-align: left;
-	padding-top: 5px;
-	padding-bottom: 4px;
-	background-color: #A7C942;
-	color: #ffffff;
+#fileTable th {
+    font-size: 1.1em;
+    text-align: left;
+    padding-top: 5px;
+    padding-bottom: 4px;
+    background-color: #99ccff;
+    color: #ffffff;
+}
+
+#fileTable tr.alt td {
+    color: #000000;
+    background-color: #EAF2D3;
 }
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -48,7 +53,7 @@
 								"<center><img src='images/no-record-found.png' alt='No Records Found....:-(' /></center>");
 			} else {
 		%>
-		<table id="filetable">
+		<table  id="fileTable">
 
 			<tr>
 				<th>File Name</th>

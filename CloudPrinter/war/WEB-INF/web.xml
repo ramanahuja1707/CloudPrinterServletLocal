@@ -116,9 +116,45 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<url-pattern>/changepassword</url-pattern>
 	</servlet-mapping>
 
-	
-	
-	
+
+
+	<servlet>
+		<servlet-name>GetDeletedFiles</servlet-name>
+		<servlet-class>com.cloudprinter.servlet.GetDeletedFiles</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetDeletedFiles</servlet-name>
+		<url-pattern>/getdeletedfiles</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>DeleteFile</servlet-name>
+		<servlet-class>com.cloudprinter.servlet.DeleteFile</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteFile</servlet-name>
+		<url-pattern>/deletefile</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>DeleteFilePermanently</servlet-name>
+		<servlet-class>com.cloudprinter.servlet.DeleteFilePermanently</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteFilePermanently</servlet-name>
+		<url-pattern>/deletefilepermanently</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>GetAllPrintRequests</servlet-name>
+		<servlet-class>com.cloudprinter.servlet.GetAllPrintRequests</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetAllPrintRequests</servlet-name>
+		<url-pattern>/getallprintrequests</url-pattern>
+	</servlet-mapping>
+
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>

@@ -64,11 +64,11 @@ public class UploadFile extends HttpServlet {
 			fileData.setFileName(fileName);
 			fileData.setFileSize(sizeInBytes + "");
 
-			fileData.setFileType(FileType.USERUPLOADED);
+			fileData.setFileType(FileType.USERUPLOADED.getFileType());
 			fileData.setIpAddressOfHost("null");
 			fileData.setLoginId(session.getAttribute("loginId").toString());
 			fileData.setUploadError("null");
-			fileData.setUploadStatus(UploadStatus.UPLOADED);
+			fileData.setUploadStatus(UploadStatus.UPLOADED.getStatus());
 
 			if (fileDataSavingService.FileDataSavingService(fileData).equals(
 					"file_data_saved")) {

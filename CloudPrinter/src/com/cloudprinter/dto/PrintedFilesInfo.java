@@ -11,18 +11,34 @@ public class PrintedFilesInfo {
 	@Id
 	private String printRequestId; // fileKey+"@"+date of printing
 	private String fileKey;
+	private String fileName;
 	private String loginId; // foreign key
 	private Date dateOfPrintRequest;
 	private String printCopies;
 	private String printStatus;
 	private String printError;
 	private String paperType;
-	private String paperSpecification;
-	private String printerType;
+	private String pageSpecification;
 	private String pageNumberCustomization;
-	private String pageLayout;
 	private String startPageNumber; // set if page customization is true
 	private String endPageNumber; // set if page customization is true
+	private String printingLocation;
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public String getPrintingLocation() {
+		return printingLocation;
+	}
+
+	public void setPrintingLocation(String printingLocation) {
+		this.printingLocation = printingLocation;
+	}
 
 	public String getPrintRequestId() {
 		return printRequestId;
@@ -88,20 +104,12 @@ public class PrintedFilesInfo {
 		this.paperType = paperType;
 	}
 
-	public String getPaperSpecification() {
-		return paperSpecification;
+	public String getPageSpecification() {
+		return pageSpecification;
 	}
 
-	public void setPaperSpecification(String paperSpecification) {
-		this.paperSpecification = paperSpecification;
-	}
-
-	public String getPrinterType() {
-		return printerType;
-	}
-
-	public void setPrinterType(String printerType) {
-		this.printerType = printerType;
+	public void setPageSpecification(String pageSpecification) {
+		this.pageSpecification = pageSpecification;
 	}
 
 	public String getPageNumberCustomization() {
@@ -110,14 +118,6 @@ public class PrintedFilesInfo {
 
 	public void setPageNumberCustomization(String pageNumberCustomization) {
 		this.pageNumberCustomization = pageNumberCustomization;
-	}
-
-	public String getPageLayout() {
-		return pageLayout;
-	}
-
-	public void setPageLayout(String pageLayout) {
-		this.pageLayout = pageLayout;
 	}
 
 	public String getStartPageNumber() {

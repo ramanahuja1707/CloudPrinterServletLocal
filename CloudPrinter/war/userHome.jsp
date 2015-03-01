@@ -30,6 +30,12 @@
 	<a href="changePassword.jsp">Change Password</a>
 	<br>
 	<br>
+	<a href="getdeletedfiles">Deleted Files</a>
+	<br>
+	<br>
+	<a href="getallprintrequests">Show Print Request Status</a>
+	<br>
+	<br>
 	<a href="logout">Logout</a>
 
 

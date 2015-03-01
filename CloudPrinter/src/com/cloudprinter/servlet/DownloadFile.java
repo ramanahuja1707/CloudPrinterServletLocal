@@ -22,10 +22,10 @@ public class DownloadFile extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			String fileSelected = req.getParameter("fileSelected");
-		//	String[] fileData = fileSelected.split("!");
+			String[] fileData = fileSelected.split("#");
 			
-			if (fileSelected != null) {
-				BlobKey blobKey = new BlobKey(fileSelected);
+			if (fileData[0] != null) {
+				BlobKey blobKey = new BlobKey(fileData[0]);
 				blobstoreService.serve(blobKey, resp);
 			} else {
 				req.setAttribute("downloadError", "File Does Not Exist ...:-(");
@@ -33,7 +33,7 @@ public class DownloadFile extends HttpServlet {
 				rd.forward(req, resp);
 			}
 		} catch (Exception e) {
-			req.setAttribute("downloadError", "Some Error Occured..:-(");
+			req.setAttribute("downloadError", "Please Select a file..:-(");
 			RequestDispatcher rd = req.getRequestDispatcher("/getallfiles");
 			rd.forward(req, resp);
 

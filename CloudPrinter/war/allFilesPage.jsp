@@ -36,6 +36,8 @@
 		} else if (clickedButton.name == "downloadbutton") {
 
 			document.printanddownloadform.action = "downloadfile";
+		} else if (clickedButton.name == "deletebutton") {
+			document.printanddownloadform.action = "deletefile";
 		}
 		document.printanddownloadform.submit();
 	}
@@ -53,11 +55,27 @@
 <title>Cloud Printer HMRITM</title>
 </head>
 <body>
-
-
+	<%
+		if (session.getAttribute("emailId") == null
+				&& session.getAttribute("password") == null
+				&& session.getAttribute("loginId") == null) {
+			RequestDispatcher rd = request
+					.getRequestDispatcher("/notInSession.jsp");
+			rd.forward(request, response);
+		}
+	%>
 	<center>
+		<%
+			if (request.getAttribute("uploadedFiles") == null) {
+				response.getWriter()
+						.println(
+								"<center><img src='images/no-record-found.png' alt='No Records Found....:-(' /></center>");
+			} else {
+		%>
 		<form action="#" method="get" name="printanddownloadform">
+
 			<table id="filetable">
+
 				<tr>
 					<th>File Name</th>
 					<th>Date of Uploading</th>
@@ -66,43 +84,52 @@
 					<th>Select</th>
 				</tr>
 				<%
-					if (request.getAttribute("uploadedFiles") == null) {
-						response.getWriter().println("No Files Found.....:-(");
-					} else {
-						ArrayList<UploadedFilesInfo> uploadedFiles = (ArrayList<UploadedFilesInfo>) request
+					ArrayList<UploadedFilesInfo> uploadedFiles = (ArrayList<UploadedFilesInfo>) request
 								.getAttribute("uploadedFiles");
 						for (UploadedFilesInfo u : uploadedFiles) {
 							String fileType;
-							if (u.getFileType().equals(FileType.USERUPLOADED)) {
+							if (u.getFileType().equals(
+									FileType.USERUPLOADED.getFileType())) {
 								fileType = "Uploaded";
 							} else {
 								fileType = "Created";
 							}
 							String fileKey = u.getFileKey();
+							int month = u.getDateOfUploading().getMonth() + 1;
+							//int date=u.getDateOfUploading().getDate()+1;
+							int year = u.getDateOfUploading().getYear() + 1900;
 				%>
 				<tr>
 
 					<td><%=u.getFileName()%></td>
-					<td><%=u.getDateOfUploading().getDate() + "-"
-							+ u.getDateOfUploading().getMonth() + "-"
-							+ u.getDateOfUploading().getYear()%></td>
+					<td><%=u.getDateOfUploading().getDate() + "-" + month
+							+ "-" + year%></td>
 					<td><%=fileType%></td>
 					<td><%=u.getUploadStatus()%></td>
-					<td><input type="radio" value="<%=u.getFileKey()%>"
+					<td><input type="radio"
+						value="<%=u.getFileKey() + "#" + u.getFileName()%>"
 						name="fileSelected" /></td>
-					<td style="display: none;"><input type="checkbox"
-						value="<%=fileKey%>" name="fileKey" /></td>
+					<td style="display: none;"><input type="text"
+						value="<%=u.getFileId()%>" name="fileId" /></td>
 				</tr>
-
 				<%
 					}
 					}
 				%>
+
 			</table>
+			<%
+				if (request.getAttribute("uploadedFiles") != null) {
+			%>
 			<input type="button" value="Print File" name="printbutton"
 				onclick="validatePrintAndDownloadForm(this)"> <br> <br>
 			<input type="button" value="Serve File" name="downloadbutton"
+				onclick="validatePrintAndDownloadForm(this)"> <input
+				type="button" value="Delete File" name="deletebutton"
 				onclick="validatePrintAndDownloadForm(this)">
+			<%
+				}
+			%>
 		</form>
 
 		<br> <br>
@@ -113,8 +140,27 @@
 		%><%=request.getAttribute("downloadError")%>
 		<%
 			}
+		%><br>
+		<%
+			if (request.getAttribute("printError") != null) {
+		%><%=request.getAttribute("printError")%>
+		<%
+			}
 		%>
-		<br> <br> <a href="userHome.jsp">Go back</a>
+		<br>
+		<%
+			if (request.getAttribute("deleteError") != null) {
+		%><%=request.getAttribute("deleteError")%>
+		<%
+			}
+		%>
+		<br> <br> <a href="userHome.jsp">Go back</a> <br> <br>
+		<%
+			if (request.getAttribute("filePrintStatus") != null) {
+				response.getWriter().println(
+						request.getAttribute("filePrintStatus"));
+			}
+		%>
 	</center>
 </body>
 </html>

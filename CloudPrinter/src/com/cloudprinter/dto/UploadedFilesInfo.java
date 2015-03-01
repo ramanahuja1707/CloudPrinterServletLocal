@@ -13,19 +13,19 @@ import com.cloudprinter.enums.UploadStatus;
 @Entity
 public class UploadedFilesInfo {
 
-	String fileKey;
+	
 	@Id
 	String fileId; // filename+date
+	String fileKey;
 	String loginId; // foreign key
 	String fileName;
 	String fileSize;
 	@Temporal(TemporalType.DATE)
 	Date dateOfUploading;
 	String ipAddressOfHost;
-	UploadStatus uploadStatus;
+	String uploadStatus;
 	String uploadError;
-	FileType fileType;
-	
+	String fileType;
 
 	private String contentType;
 
@@ -93,14 +93,6 @@ public class UploadedFilesInfo {
 		this.ipAddressOfHost = ipAddressOfHost;
 	}
 
-	public UploadStatus getUploadStatus() {
-		return uploadStatus;
-	}
-
-	public void setUploadStatus(UploadStatus uploadStatus) {
-		this.uploadStatus = uploadStatus;
-	}
-
 	public String getUploadError() {
 		return uploadError;
 	}
@@ -109,11 +101,19 @@ public class UploadedFilesInfo {
 		this.uploadError = uploadError;
 	}
 
-	public FileType getFileType() {
+	public String getUploadStatus() {
+		return uploadStatus;
+	}
+
+	public void setUploadStatus(String uploadStatus) {
+		this.uploadStatus = uploadStatus;
+	}
+
+	public String getFileType() {
 		return fileType;
 	}
 
-	public void setFileType(FileType fileType) {
+	public void setFileType(String fileType) {
 		this.fileType = fileType;
 	}
 

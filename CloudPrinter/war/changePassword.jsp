@@ -34,6 +34,16 @@
 <title>Cloud Printer HMRITM</title>
 </head>
 <body>
+
+	<%
+		if (session.getAttribute("emailId") == null
+				&& session.getAttribute("password") == null
+				&& session.getAttribute("loginId") == null) {
+			RequestDispatcher rd = request
+					.getRequestDispatcher("/notInSession.jsp");
+			rd.forward(request, response);
+		}
+	%>
 	<center>
 		<form action="changepassword" method="post" name="myForm"
 			onsubmit="return validateForm()">
@@ -56,8 +66,9 @@
 	<%
 		}
 	%>
-	
-	<br><br>
+
+	<br>
+	<br>
 	<a href="userHome.jsp">Go back</a>
 </body>
 </html>

@@ -64,7 +64,7 @@
 					<h1 style="margin-top: 56px">Login</h1>
 				</div>
 				<div class="loginbox">
-					<form action="login" method="post" name="myForm"
+					<form action="login" name="myForm" method="post"
 						onsubmit="return validateForm()">
 						<div class="name">
 							Login Id: <input name="loginId" type="text"
@@ -82,24 +82,39 @@
 							<input type="submit" value="submit" /> <br>
 						</div>
 					</form>
-					<br />
+
+
 					<%
-						if (request.getAttribute("forgotPasswordStatus") != null) {
-							response.getWriter().println(
-									request.getAttribute("forgotPasswordStatus"));
+						if (request.getAttribute("loginError") != null) {
+					%>
+					<p style="color: red; font: italic; font-family: sans-serif;"><%=request.getAttribute("loginError")%></p>
+					<%
 						}
 					%>
+					<%
+						if (request.getAttribute("logoutStatus") != null) {
+					%>
+
+					<p style="color: red; font: italic; font-family: sans-serif;">Logout
+						Successfully...:-)</p>
+					<%
+						}
+					%>
+
 					<div
 						style="width: 45%; text-align: right; float: left; font-family: Verdana, Geneva, sans-serif; font-size: 10px; text-decoration: underline; color: #6d7676;">
-						<a href="forgotPassword.jsp">Forgot Password!!</a>
+						<a href="forgotPassword.jsp"><img
+							src="images/forgotpassword.png" alt="Forgot Password !!"
+							style="width: 100px; height: 100px;"></a>
 					</div>
 					<div
 						style="width: 45%; text-align: right; float: left; font-family: Verdana, Geneva, sans-serif; font-size: 10px; text-decoration: underline; color: #6d7676;">
-						<a href="forgotLoginId.jsp">Forgot Login Id!!</a>
+						<a href="forgotLoginId.jsp"><img src="images/forgotid.png"
+							alt="Forgot Login Id !!" style="width: 100px; height: 100px;"></a>
 					</div>
-					<br> <a href="registerUser.jsp"><img alt=""
-						src="images/register.jpg"
-						style="width: 85%; height: 220px; margin-left: 15px; text-align: left; float: left; color: #6d7676;"></a>
+					<a href="registerUser.jsp"><img alt=""
+						src="images/register.png"
+						style="width: 85%; height: 130px; margin-left: 15px; text-align: left; float: left; color: #6d7676;"></a>
 				</div>
 			</div>
 			<div class="main2">
@@ -128,7 +143,16 @@
 							<input type="submit" value="Get Password" />
 						</div>
 					</form>
-					<b><font size="4px" style="color: #84D7FD;"></font></b> <br />
+					<%
+						if (request.getAttribute("forgotPasswordStatus") != null) {
+					%>
+
+					<p style="color: red; font: italic; font-family: sans-serif;">
+						<%=request.getAttribute("forgotPasswordStatus")%></p>
+					<%
+						}
+					%>
+
 					</p>
 				</div>
 			</div>

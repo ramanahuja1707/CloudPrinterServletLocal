@@ -4,6 +4,8 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
+
+
 	<servlet>
 		<servlet-name>ObjectifyRegisterService</servlet-name>
 		<servlet-class>com.cloudprinter.startup.ObjectifyRegisterService</servlet-class>
@@ -154,8 +156,12 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>GetAllPrintRequests</servlet-name>
 		<url-pattern>/getallprintrequests</url-pattern>
 	</servlet-mapping>
-
+	
+	
+	
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
+
+
 </web-app>

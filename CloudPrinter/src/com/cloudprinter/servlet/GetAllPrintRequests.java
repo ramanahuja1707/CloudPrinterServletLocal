@@ -39,10 +39,9 @@ public class GetAllPrintRequests extends HttpServlet {
 					.getRequestDispatcher("/showPrintRequests.jsp");
 			rd.forward(req, resp);
 		} else {
-			printFileRequestList = null;
-			req.setAttribute("printFileRequestList", printFileRequestList);
+
 			RequestDispatcher rd = req
-					.getRequestDispatcher("/showPrintRequests.jsp");
+					.getRequestDispatcher("/noRecordFound.jsp");
 			rd.forward(req, resp);
 		}
 	}

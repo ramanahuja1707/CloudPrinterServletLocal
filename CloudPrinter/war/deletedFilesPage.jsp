@@ -2,8 +2,6 @@
 	pageEncoding="ISO-8859-1"%>
 <%@page import="com.cloudprinter.dto.DeletedFiles"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="java.util.ArrayList"%><%@page
-	import="com.cloudprinter.dto.PrintedFilesInfo"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -34,6 +32,23 @@
 	background-color: #EAF2D3;
 }
 </style>
+<script type="text/javascript">
+	function submitForm(clickedButton) {
+		if (clickedButton.name == "deletebutton") {
+			document.deleteFilesPermanentform.action = "deletefilepermanently";
+		}
+		document.deleteFilesPermanentform.submit();
+	}
+
+	function validateDeleteFilesPermanentForm(clickedButton) {
+		var fileSelected = document.forms["deleteFilesPermanentform"]["fileSelected"].value;
+		if (fileSelected == null || fileSelected == "") {
+			document.getElementById("fileSelectError").innerHTML = "Please Select a File ...";
+		} else {
+			submitForm(clickedButton);
+		}
+	}
+</script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Cloud Printer HMRITM</title>
 <link href="style.css" rel="stylesheet" type="text/css" />
@@ -69,7 +84,9 @@
 		<div class="main">
 			<div class="login">
 				<div class="loginbg">
-					<h1 style="margin-top: 56px"><a href="userHome.jsp">Home</a></h1>
+					<h1 style="margin-top: 56px">
+						<a href="userHome.jsp">Home</a>
+					</h1>
 				</div>
 				<div class="loginbox">
 					<br> <a href="uploadFiles.jsp"><img alt="Upload File"
@@ -82,60 +99,67 @@
 				</div>
 			</div>
 			<div class="main2">
-				<div>
-					<h1 style="width: 100%; text-align: center;"></h1>
+				<div class="maincontent_bg">
+					<h1 style="width: 100%; text-align: center;">
+						Welcome:<%=request.getSession(false).getAttribute("loginId")%></h1>
 				</div>
 				<div
-					style="width: 500px; height: 420px; float: right; background-color: #ebebeb;">
+					style="width: 416px; height: 420px; float: right; background-color: #ebebeb;">
+					<p>
+						<%
+							if (request.getAttribute("deletedFiles") == null) {
+								response.sendRedirect("noRecordFound.jsp");
+							} else {
+						%>
+					
+					<form action="#" method="get" name="deleteFilesPermanentform">
 
+						<table id="fileTable">
+
+							<tr>
+								<th>File Name</th>
+								<th>Deletion Status</th>
+								<th>Select</th>
+							</tr>
+							<%
+								ArrayList<DeletedFiles> deletedFiles = (ArrayList<DeletedFiles>) request
+											.getAttribute("deletedFiles");
+									for (DeletedFiles u : deletedFiles) {
+							%>
+							<tr>
+								<td><%=u.getFileName()%></td>
+								<td><%=u.getFileDeletionStatus()%></td>
+								<td><input type="radio"
+									value="<%=u.getFileId() + "#" + u.getFileName()%>"
+									name="fileSelected" /></td>
+								<td style="display: none;"><input type="text"
+									value="<%=u.getFileId()%>" name="fileId" /></td>
+								<td style="display: none;"><input type="text"
+									value="<%=u.getFileName()%>" name="fileName" /></td>
+							</tr>
+							<%
+								}
+									request.removeAttribute("deletedFiles");
+								}
+							%>
+						</table>
+
+						<br> <input type="button" value="Delete File Permanently"
+							name="deletebutton"
+							onclick="validateDeleteFilesPermanentForm(this)">
+
+					</form>
+
+					<br> <br>
+					<p id="fileSelectError" style="color: red;"></p>
+					<br> <br>
 					<%
-						if (request.getAttribute("printFileRequestList") == null) {
-							response.sendRedirect("noRecordFound.jsp");
-						} else {
-					%>
-
-					<table id="fileTable">
-
-						<tr>
-							<th>File Name</th>
-							<th>Date of Printing</th>
-							<th>Print Status</th>
-							<th>Print Error</th>
-							<th>Paper Type</th>
-							<th>Copies</th>
-							<th>Printing Location</th>
-						</tr>
-
-						<%
-							ArrayList<PrintedFilesInfo> printFilesList = (ArrayList<PrintedFilesInfo>) request
-										.getAttribute("printFileRequestList");
-								for (PrintedFilesInfo u : printFilesList) {
-
-									String fileKey = u.getFileKey();
-									int month = u.getDateOfPrintRequest().getMonth() + 1;
-									//int date=u.getDateOfUploading().getDate()+1;
-									int year = u.getDateOfPrintRequest().getYear() + 1900;
-						%>
-						<tr>
-
-							<td><%=u.getFileName()%></td>
-							<td><%=u.getDateOfPrintRequest().getDate() + "-" + month
-							+ "-" + year%></td>
-							<td><%=u.getPrintStatus()%></td>
-							<td><%=u.getPrintError()%></td>
-							<td><%=u.getPaperType()%></td>
-							<td><%=u.getPrintCopies()%></td>
-							<td><%=u.getPrintingLocation()%></td>
-						</tr>
-						<%
-							}
-								request.removeAttribute("printFileRequestList");
-							}
-						%>
-
-					</table>
-
-
+						if (request.getAttribute("deleteFilePermanentError") != null) {
+					%><p style="color: red; font: italic; font-family: sans-serif;"><%=request.getAttribute("deleteFilePermanentError")%>
+					</p>
+					<%
+						}
+					%></p>
 
 				</div>
 			</div>

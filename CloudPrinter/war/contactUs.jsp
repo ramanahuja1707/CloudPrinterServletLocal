@@ -32,7 +32,8 @@
 					<h1 style="margin-top: 56px">Login</h1>
 				</div>
 				<div class="loginbox">
-					<form action="login" method="post">
+					<form action="login" name="myForm" method="post"
+						onsubmit="return validateForm()">
 						<div class="name">
 							Login Id: <input name="loginId" type="text"
 								style="float: right; width: 62%; border-radius: 5px; border: 1px solid #e4e4e4; text-align: left;" />
@@ -49,29 +50,39 @@
 							<input type="submit" value="submit" /> <br>
 						</div>
 					</form>
-					<br /> <br />
+
 
 					<%
 						if (request.getAttribute("loginError") != null) {
-							response.getWriter()
-									.println(request.getAttribute("loginError"));
+					%>
+					<p style="color: red; font: italic; font-family: sans-serif;"><%=request.getAttribute("loginError")%></p>
+					<%
 						}
+					%>
+					<%
 						if (request.getAttribute("logoutStatus") != null) {
-							response.getWriter().println("Logout Successfully...");
+					%>
+
+					<p style="color: red; font: italic; font-family: sans-serif;">Logout
+						Successfully...:-)</p>
+					<%
 						}
 					%>
 
 					<div
 						style="width: 45%; text-align: right; float: left; font-family: Verdana, Geneva, sans-serif; font-size: 10px; text-decoration: underline; color: #6d7676;">
-						<a href="forgotPassword.jsp">Forgot Password!!</a>
+						<a href="forgotPassword.jsp"><img
+							src="images/forgotpassword.png" alt="Forgot Password !!"
+							style="width: 100px; height: 100px;"></a>
 					</div>
 					<div
 						style="width: 45%; text-align: right; float: left; font-family: Verdana, Geneva, sans-serif; font-size: 10px; text-decoration: underline; color: #6d7676;">
-						<a href="forgotLoginId.jsp">Forgot Login Id!!</a>
+						<a href="forgotLoginId.jsp"><img src="images/forgotid.png"
+							alt="Forgot Login Id !!" style="width: 100px; height: 100px;"></a>
 					</div>
-					<br> <a href="registerUser.jsp"><img alt=""
-						src="images/register.jpg"
-						style="width: 85%; height: 220px; margin-left: 15px; text-align: left; float: left; color: #6d7676;"></a>
+					<a href="registerUser.jsp"><img alt=""
+						src="images/register.png"
+						style="width: 85%; height: 130px; margin-left: 15px; text-align: left; float: left; color: #6d7676;"></a>
 				</div>
 			</div>
 			<div class="main2">
@@ -80,7 +91,8 @@
 				</div>
 				<div
 					style="width: 416px; height: 420px; float: right; background-color: #ebebeb;">
-					<p><h2 style="width: 95%; text-align: center;">
+					<p>
+					<h2 style="width: 95%; text-align: center;">
 						<i>Raman Ahuja</i>
 					</h2>
 					<center>
@@ -108,7 +120,8 @@
 					</h2>
 					<center>
 						<b><i>E- MAIL :-sanyam.rustagi8@gmail.com</i></b>
-					</center></p>
+					</center>
+					</p>
 
 				</div>
 			</div>

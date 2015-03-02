@@ -5,23 +5,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <script>
-function validateForm() {
-    var loginId = document.forms["myForm"]["loginId"].value;
-    var emailId = document.forms["myForm"]["mailId"].value;
-    var password = document.forms["myForm"]["password"].value;
-    if (loginId == null || loginId == "") {
-        alert("Login-Id must be filled out");
-        return false;
-    }
-    if (emailId == null || emailId == "") {
-        alert("Email-Id must be filled out");
-        return false;
-    }
-    if (password == null || password == "") {
-        alert("Password must be filled out");
-        return false;
-    }
-}
+	function validateForm() {
+		var loginId = document.forms["myForm"]["loginId"].value;
+		var emailId = document.forms["myForm"]["mailId"].value;
+		var password = document.forms["myForm"]["password"].value;
+		if (loginId == null || loginId == "") {
+			alert("Login-Id must be filled out");
+			return false;
+		}
+		if (emailId == null || emailId == "") {
+			alert("Email-Id must be filled out");
+			return false;
+		}
+		if (password == null || password == "") {
+			alert("Password must be filled out");
+			return false;
+		}
+	}
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Cloud Printer HMRITM</title>
@@ -51,8 +51,8 @@ function validateForm() {
 					<h1 style="margin-top: 56px">Login</h1>
 				</div>
 				<div class="loginbox">
-					<form action="login"
-					name="myForm" method="post" onsubmit="return validateForm()">
+					<form action="login" name="myForm" method="post"
+						onsubmit="return validateForm()">
 						<div class="name">
 							Login Id: <input name="loginId" type="text"
 								style="float: right; width: 62%; border-radius: 5px; border: 1px solid #e4e4e4; text-align: left;" />
@@ -69,30 +69,39 @@ function validateForm() {
 							<input type="submit" value="submit" /> <br>
 						</div>
 					</form>
-					<br /> <br />
+
 
 					<%
 						if (request.getAttribute("loginError") != null) {
-							response.getWriter()
-									.println(request.getAttribute("loginError"));
+					%>
+					<p style="color: red; font: italic; font-family: sans-serif;"><%=request.getAttribute("loginError")%></p>
+					<%
 						}
+					%>
+					<%
 						if (request.getAttribute("logoutStatus") != null) {
-							response.getWriter().println("Logout Successfully...");
+					%>
+
+					<p style="color: red; font: italic; font-family: sans-serif;">Logout
+						Successfully...:-)</p>
+					<%
 						}
 					%>
 
 					<div
 						style="width: 45%; text-align: right; float: left; font-family: Verdana, Geneva, sans-serif; font-size: 10px; text-decoration: underline; color: #6d7676;">
-						<a href="forgotPassword.jsp">Forgot Password!!</a>
+						<a href="forgotPassword.jsp"><img
+							src="images/forgotpassword.png" alt="Forgot Password !!"
+							style="width: 100px; height: 100px;"></a>
 					</div>
 					<div
 						style="width: 45%; text-align: right; float: left; font-family: Verdana, Geneva, sans-serif; font-size: 10px; text-decoration: underline; color: #6d7676;">
-						<a href="forgotLoginId.jsp">Forgot Login Id!!</a>
+						<a href="forgotLoginId.jsp"><img src="images/forgotid.png"
+							alt="Forgot Login Id !!" style="width: 100px; height: 100px;"></a>
 					</div>
-					<br>
 					<a href="registerUser.jsp"><img alt=""
-						src="images/register.jpg"
-						style="width: 85%; height: 220px; margin-left: 15px; text-align: left; float: left; color: #6d7676;"></a>
+						src="images/register.png"
+						style="width: 85%; height: 130px; margin-left: 15px; text-align: left; float: left; color: #6d7676;"></a>
 				</div>
 			</div>
 			<div class="main2">

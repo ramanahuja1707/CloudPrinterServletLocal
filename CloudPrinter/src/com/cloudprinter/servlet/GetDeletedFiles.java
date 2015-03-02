@@ -36,15 +36,22 @@ public class GetDeletedFiles extends HttpServlet {
 					deletedFiles.add(deletedFile);
 				}
 			}
-			req.setAttribute("deletedFiles",deletedFiles);
-			RequestDispatcher rd = req
-					.getRequestDispatcher("/deletedFilesPage.jsp");
-			rd.forward(req, resp);
-		} else {
-			deletedFiles = null;
+			if(deletedFiles.size()>0)
+			{
 			req.setAttribute("deletedFiles", deletedFiles);
 			RequestDispatcher rd = req
 					.getRequestDispatcher("/deletedFilesPage.jsp");
+			rd.forward(req, resp);
+			}else
+			{
+				RequestDispatcher rd = req
+						.getRequestDispatcher("/noRecordFound.jsp");
+				rd.forward(req, resp);	
+			}
+		} else {
+
+			RequestDispatcher rd = req
+					.getRequestDispatcher("/noRecordFound.jsp");
 			rd.forward(req, resp);
 		}
 	}

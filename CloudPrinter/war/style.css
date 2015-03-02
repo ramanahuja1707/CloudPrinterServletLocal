@@ -35,6 +35,9 @@ img.logo{
 .menu{
 	width:77px; height:80px; float:left; margin-left:14%; margin-top:15px; font-family:verdana; font-size:12px; font-weight:bold; color:#fff; background-repeat:no-repeat;
 }
+.usermenu{
+	width:77px; height:80px; float:left; margin-left:14%; margin-top:15px; font-family:verdana; font-size:12px; font-weight:bold; background-repeat:no-repeat;
+}
 .main{
 	width:697px; height:auto; float:left; margin-left:15%; margin-top:5%;
 }

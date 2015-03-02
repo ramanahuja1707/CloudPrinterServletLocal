@@ -1,56 +1,76 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-
+<%@page import="com.cloudprinter.dto.DeletedFiles"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<script>
-function validateForm() {
-    var loginId = document.forms["myForm"]["loginId"].value;
-    var emailId = document.forms["myForm"]["mailId"].value;
-    var password = document.forms["myForm"]["password"].value;
-    if (loginId == null || loginId == "") {
-        alert("Login-Id must be filled out");
-        return false;
-    }
-    if (emailId == null || emailId == "") {
-        alert("Email-Id must be filled out");
-        return false;
-    }
-    if (password == null || password == "") {
-        alert("Password must be filled out");
-        return false;
-    }
-}
-</script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Cloud Printer HMRITM</title>
 <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+	<%
+		if (session.getAttribute("emailId") == null
+				&& session.getAttribute("password") == null
+				&& session.getAttribute("loginId") == null) {
+			RequestDispatcher rd = request
+					.getRequestDispatcher("/notInSession.jsp");
+			rd.forward(request, response);
+		}
+	%>
+
 	<div
 		style="background-image: url(images/bg.jpg); width: 1000px; text-align: center; height: 646px; margin-left: 15%;">
 		<div class="banner">
 			<img src="images/logo.gif" class="logo" />
 			<div class="bannertext">Cloud Printing</div>
 			<div class="menu">
-				<a href="loginPage.jsp"><img src="images/home.jpg" /></a>Home
+				<a href="help.jsp"><img src="images/help.png" /></a>Help
 			</div>
 			<div style="margin-left: 1%;" class="menu">
-				<a href="aboutUs.jsp"><img src="images/aboutus.jpg" /></a>About Us
+				<a href="changePassword.jsp"><img
+					src="images/password-change.png" /></a>Change Password
 			</div>
 			<div style="margin-left: 1.5%;" class="menu">
-				<a href="contactUs.jsp"><img src="images/contact-us.jpg" /></a>Contact
-				Us
+				<a href="logout"><img src="images/logout.png" /></a>Logout
 			</div>
 		</div>
 
-			<div style="text-align:right;margin-top:200px; margin-left:100px; float:left;width:61%; font-family:Verdana, Geneva, sans-serif; font-size:10px; text-decoration:underline; color:#6d7676;">
-				<br>
+		<div class="main">
+			<div class="login">
+				<div class="loginbg">
+					<h1 style="margin-top: 56px">
+						<a href="userHome.jsp">Home</a>
+					</h1>
+				</div>
+				<div class="loginbox">
+					<br> <a href="uploadFiles.jsp"><img alt="Upload File"
+						src="images/uploadfile.png"></a> <br> <a href="getallfiles"><img
+						alt="My files" src="images/myfiles.png"></a> <br> <a
+						href="getdeletedfiles"><img alt="Deleted Files"
+						src="images/deletedfiles.png"></a> <br> <a
+						href="getallprintrequests"><img alt="Print Files Status"
+						src="images/printfilestatus.png"></a>
+				</div>
+			</div>
+			<div class="main2">
+				<div class="maincontent_bg">
+					<h1 style="width: 100%; text-align: center;">
+						Welcome:<%=request.getSession(false).getAttribute("loginId")%></h1>
+				</div>
+				<div
+					style="width: 416px; height: 420px; float: right; background-color: #ebebeb;">
+					<p>
+						<%
+							if (request.getAttribute("filePrintStatus") != null) {
+						%><p style="color: red; font: italic; font-family: sans-serif;">
 				
-				 <img alt="cloud printing" src="images/session-expired.png"
-							style="width: 380px; height: 220px;">
-							<p style="text-align:right; margin-left:100px; float:left;width:61%; font-family:Verdana, Geneva, sans-serif; font-size:25px; text-decoration:underline; color:#6d7676;" > <a href="loginPage.jsp"> Click here to Login</a></p>
+						<%=request.getAttribute("filePrintStatus")%></p>
+					<%
+						}
+					%>
+					</p></div>
 			</div>
 		</div>
 

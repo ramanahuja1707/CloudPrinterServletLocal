@@ -114,12 +114,12 @@ public class PrintFile extends HttpServlet {
 			ob.put(printFileInfo);
 			setFilePrintStatus("File Suucessfully Sent for printing...:-)");
 			req.setAttribute("filePrintStatus", getFilePrintStatus());
-			RequestDispatcher rd = req.getRequestDispatcher("/getallfiles");
+			RequestDispatcher rd = req.getRequestDispatcher("/printFileSuccess.jsp");
 			rd.forward(req, resp);
 		} catch (Exception e) {
 			setFilePrintStatus("File Printing Failed , Try Again ..:-(");
 			req.setAttribute("filePrintStatus", getFilePrintStatus());
-			RequestDispatcher rd = req.getRequestDispatcher("/getallfiles");
+			RequestDispatcher rd = req.getRequestDispatcher("/printFileSuccess.jsp");
 			rd.forward(req, resp);
 		}
 

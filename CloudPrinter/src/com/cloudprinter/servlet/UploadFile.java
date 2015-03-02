@@ -2,12 +2,11 @@ package com.cloudprinter.servlet;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import javax.mail.Session;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,6 +34,11 @@ public class UploadFile extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		resp.setContentType("text/html");
+		PrintWriter out = resp.getWriter();
+		out.print("<html>\r\n");
+		out.print("<head><title></title></head>\r\n");
+		out.println("<body>Hello World");
 
 		Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(req);
 		List<BlobKey> blobKeys = blobs.get("myFile");
@@ -47,10 +51,15 @@ public class UploadFile extends HttpServlet {
 		if (blobKeys == null || blobKeys.isEmpty()) {
 			req.setAttribute("fileUploadStatus",
 					"Error occured , try again after sometime...:-(");
+			resp.getWriter().println(req.getAttribute("fileUploadStatus"));
+			out.println(
+					"<a href='/userHome.jsp'>Go back</a>");
 			// resp.getWriter().println(req.getAttribute("fileUploadStatus"));
-
-			RequestDispatcher rd = req.getRequestDispatcher("/uploadFiles.jsp");
-			rd.forward(req, resp);
+			/*
+			 * RequestDispatcher rd = req
+			 * .getRequestDispatcher("/serve?fileUploadSuccess=" +
+			 * req.getAttribute("fileUploadSuccess")); rd.forward(req, resp);
+			 */
 
 		} else {
 			UploadFileDataSavingService fileDataSavingService = new UploadFileDataSavingService();
@@ -75,29 +84,36 @@ public class UploadFile extends HttpServlet {
 				req.setAttribute("fileUploadStatus",
 						"File Uploaded Successfully...:-)");
 				resp.getWriter().println(req.getAttribute("fileUploadStatus"));
+				out.println(
+						"<a href='/userHome.jsp'>Go back</a>");
 				// resp.sendRedirect("/uploadFiles.jsp");
-				RequestDispatcher rd = req
-						.getRequestDispatcher("/uploadFiles.jsp");
-				rd.forward(req, resp);
+				/*
+				 * RequestDispatcher rd = req
+				 * .getRequestDispatcher("/serve?fileUploadSuccess=" +
+				 * req.getAttribute("fileUploadSuccess")); rd.forward(req,
+				 * resp);
+				 */
 
 			} else {
 				req.setAttribute("fileUploadStatus", "File Uploading Error :-("
 
 				);
-				resp.getWriter().println(req.getAttribute("fileUploadStatus"));
+
 				blobstoreService.delete(blobKeys.get(0));
+				resp.getWriter().println(req.getAttribute("fileUploadStatus"));
+				out.println(
+						"<a href='/userHome.jsp'>Go back</a>");
 				// resp.sendRedirect("/uploadFiles.jsp");
-				RequestDispatcher rd = req
-						.getRequestDispatcher("/uploadFiles.jsp");
-				rd.forward(req, resp);
+				/*
+				 * RequestDispatcher rd = req
+				 * .getRequestDispatcher("/serve?fileUploadSuccess=" +
+				 * req.getAttribute("fileUploadSuccess")); rd.forward(req,
+				 * resp);
+				 */
 
 			}
 
-			/*
-			 * RequestDispatcher rd = req
-			 * .getRequestDispatcher("/uploadFiles.jsp"); rd.forward(req, resp);
-			 */
-
+			out.print("</body></html>\r\n");
 		}
 	}
 }

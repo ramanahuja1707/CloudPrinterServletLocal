@@ -31,18 +31,24 @@ public class GetAllFiles extends HttpServlet {
 		if (uploadedFilesList.list().size() > 0) {
 			uploadedFiles = new ArrayList<>();
 			for (UploadedFilesInfo file : uploadedFilesList) {
-				if (!(file.getUploadStatus().equals(UploadStatus.DELETED.getStatus())))
+				if (!(file.getUploadStatus().equals(UploadStatus.DELETED
+						.getStatus())))
 					uploadedFiles.add(file);
 			}
-			req.setAttribute("uploadedFiles", uploadedFiles);
-			RequestDispatcher rd = req
-					.getRequestDispatcher("/allFilesPage.jsp");
-			rd.forward(req, resp);
+			if (uploadedFiles.size() > 0) {
+				req.setAttribute("uploadedFiles", uploadedFiles);
+				RequestDispatcher rd = req
+						.getRequestDispatcher("/allFilesPage.jsp");
+				rd.forward(req, resp);
+			} else {
+				RequestDispatcher rd = req
+						.getRequestDispatcher("/noRecordFound.jsp");
+				rd.forward(req, resp);
+			}
 		} else {
-			uploadedFiles = null;
-			req.setAttribute("uploadedFiles", uploadedFiles);
+
 			RequestDispatcher rd = req
-					.getRequestDispatcher("/allFilesPage.jsp");
+					.getRequestDispatcher("/noRecordFound.jsp");
 			rd.forward(req, resp);
 		}
 	}

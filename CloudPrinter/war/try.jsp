@@ -69,7 +69,7 @@
 		<div class="main">
 			<div class="login">
 				<div class="loginbg">
-					<h1 style="margin-top: 56px"><a href="userHome.jsp">Home</a></h1>
+					<h1 style="margin-top: 56px">Menu</h1>
 				</div>
 				<div class="loginbox">
 					<br> <a href="uploadFiles.jsp"><img alt="Upload File"
@@ -82,59 +82,61 @@
 				</div>
 			</div>
 			<div class="main2">
-				<div>
-					<h1 style="width: 100%; text-align: center;"></h1>
+				<div class="maincontent_bg">
+					<h1 style="width: 100%; text-align: center;">
+						Welcome:<%=request.getSession(false).getAttribute("loginId")%></h1>
 				</div>
 				<div
-					style="width: 500px; height: 420px; float: right; background-color: #ebebeb;">
-
-					<%
-						if (request.getAttribute("printFileRequestList") == null) {
-							response.sendRedirect("noRecordFound.jsp");
-						} else {
-					%>
+					style="width: 416px; height: 420px; float: right; background-color: #ebebeb;">
+					<p>
+						<%
+							if (request.getAttribute("printFileRequestList") == null) {
+								response.getWriter()
+										.println(
+												"<center><img src='images/no-record-found.png' alt='No Records Found....:-(' /></center>");
+							} else {
+						%>
 
 					<table id="fileTable">
 
 						<tr>
-							<th>File Name</th>
-							<th>Date of Printing</th>
-							<th>Print Status</th>
-							<th>Print Error</th>
-							<th>Paper Type</th>
-							<th>Copies</th>
-							<th>Printing Location</th>
-						</tr>
+				<th>File Name</th>
+				<th>Date of Printing</th>
+				<th>Print Status</th>
+				<th>Print Error</th>
+				<th>Paper Type</th>
+				<th>Copies</th>
+				<th>Printing Location</th>
+			</tr>
 
-						<%
-							ArrayList<PrintedFilesInfo> printFilesList = (ArrayList<PrintedFilesInfo>) request
-										.getAttribute("printFileRequestList");
-								for (PrintedFilesInfo u : printFilesList) {
+			<%
+				ArrayList<PrintedFilesInfo> printFilesList = (ArrayList<PrintedFilesInfo>) request
+							.getAttribute("printFileRequestList");
+					for (PrintedFilesInfo u : printFilesList) {
 
-									String fileKey = u.getFileKey();
-									int month = u.getDateOfPrintRequest().getMonth() + 1;
-									//int date=u.getDateOfUploading().getDate()+1;
-									int year = u.getDateOfPrintRequest().getYear() + 1900;
-						%>
-						<tr>
+						String fileKey = u.getFileKey();
+						int month = u.getDateOfPrintRequest().getMonth() + 1;
+						//int date=u.getDateOfUploading().getDate()+1;
+						int year = u.getDateOfPrintRequest().getYear() + 1900;
+			%>
+			<tr>
 
-							<td><%=u.getFileName()%></td>
-							<td><%=u.getDateOfPrintRequest().getDate() + "-" + month
+				<td><%=u.getFileName()%></td>
+				<td><%=u.getDateOfPrintRequest().getDate() + "-" + month
 							+ "-" + year%></td>
-							<td><%=u.getPrintStatus()%></td>
-							<td><%=u.getPrintError()%></td>
-							<td><%=u.getPaperType()%></td>
-							<td><%=u.getPrintCopies()%></td>
-							<td><%=u.getPrintingLocation()%></td>
-						</tr>
-						<%
-							}
-								request.removeAttribute("printFileRequestList");
-							}
-						%>
+				<td><%=u.getPrintStatus()%></td>
+				<td><%=u.getPrintError()%></td>
+				<td><%=u.getPaperType()%></td>
+				<td><%=u.getPrintCopies()%></td>
+				<td><%=u.getPrintingLocation()%></td>
+			</tr>
+			<%
+				}
+				}
+			%>
 
-					</table>
-
+		</table></p>
+					
 
 
 				</div>

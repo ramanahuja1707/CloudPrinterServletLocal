@@ -36,9 +36,9 @@ public class UploadFile extends HttpServlet {
 			throws ServletException, IOException {
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
-		out.print("<html>\r\n");
-		out.print("<head><title></title></head>\r\n");
-		out.println("<body>Hello World");
+		out.print("<html>");
+		out.print("<head><title></title></head>");
+		out.println("<body>");
 
 		Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(req);
 		List<BlobKey> blobKeys = blobs.get("myFile");

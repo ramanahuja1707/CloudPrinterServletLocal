@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cloudprinter.dto.DeletedFiles;
 import com.cloudprinter.dto.PrintedFilesInfo;
+import com.cloudprinter.dto.PrintingClientLoginInfo;
 import com.cloudprinter.dto.UploadedFilesInfo;
 import com.cloudprinter.dto.UserInfo;
 import com.cloudprinter.dto.UserLoginInfo;
@@ -29,7 +30,7 @@ public class ObjectifyRegisterService extends HttpServlet {
 		ObjectifyService.register(UploadedFilesInfo.class);
 		ObjectifyService.register(PrintedFilesInfo.class);
 		ObjectifyService.register(DeletedFiles.class);
-		
+		ObjectifyService.register(PrintingClientLoginInfo.class);
 	}
 
 	public static Objectify registerService() {

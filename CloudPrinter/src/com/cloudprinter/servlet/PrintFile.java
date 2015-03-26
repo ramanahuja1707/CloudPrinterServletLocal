@@ -107,7 +107,7 @@ public class PrintFile extends HttpServlet {
 			printFileInfo.setPrintError("no-error");
 			printFileInfo.setPrintRequestId(getFileKey() + "@" + todayDate);
 			printFileInfo
-					.setPrintStatus(PrintStatus.INPROCESS.getPrintStatus());
+					.setPrintStatus(PrintStatus.SENT.getPrintStatus());
 			printFileInfo.setStartPageNumber("0");
 			printFileInfo.setPrintingLocation(getPrintingLocation());
 

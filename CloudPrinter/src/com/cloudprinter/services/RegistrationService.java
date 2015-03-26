@@ -18,11 +18,11 @@ public class RegistrationService {
 			.getLogger(RegistrationService.class.getName());
 	private RegistrationStatus rs;
 	private UserInfo user;
+	@SuppressWarnings("unused")
 	private RegistrationService registerUser;
 	private UserLoginInfo userLoginInfo;
 	static int userNumber = 1;
 
-	@SuppressWarnings("unused")
 	public RegistrationStatus registerUser(UserInfo userInformation)
 			throws RegistrationException, UnsupportedEncodingException, MessagingException {
 		registerUser = new RegistrationService();

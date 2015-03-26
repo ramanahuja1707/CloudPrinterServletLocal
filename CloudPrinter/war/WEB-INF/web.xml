@@ -4,8 +4,14 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
-
-
+	<error-page>
+		<exception-type>java.lang.Exception</exception-type>
+		<location>/error.jsp</location>
+	</error-page>
+	<error-page>
+		<exception-type>java.io.FileNotFoundException</exception-type>
+		<location>/error.jsp</location>
+	</error-page>
 	<servlet>
 		<servlet-name>ObjectifyRegisterService</servlet-name>
 		<servlet-class>com.cloudprinter.startup.ObjectifyRegisterService</servlet-class>
@@ -169,6 +175,115 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	</servlet-mapping>
 
 
+
+
+	<servlet>
+		<servlet-name>AuthenticateClient</servlet-name>
+		<servlet-class>com.cloudprinter.client.AuthenticateClient</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AuthenticateClient</servlet-name>
+		<url-pattern>/authenticateclient</url-pattern>
+	</servlet-mapping>
+
+
+
+
+	<servlet>
+		<servlet-name>GetAllPrintRequest</servlet-name>
+		<servlet-class>com.cloudprinter.client.GetAllPrintRequest</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetAllPrintRequest</servlet-name>
+		<url-pattern>/getallprintrequest</url-pattern>
+	</servlet-mapping>
+
+
+
+
+	<servlet>
+		<servlet-name>ServeFileToClient</servlet-name>
+		<servlet-class>com.cloudprinter.client.ServeFileToClient</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ServeFileToClient</servlet-name>
+		<url-pattern>/serve</url-pattern>
+	</servlet-mapping>
+
+
+
+
+	<servlet>
+		<servlet-name>UpdateFilePrintStatus</servlet-name>
+		<servlet-class>com.cloudprinter.client.UpdateFilePrintStatus</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateFilePrintStatus</servlet-name>
+		<url-pattern>/updatefileprintstatus</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>CheckUserLogin</servlet-name>
+		<servlet-class>com.cloudprinter.api.CheckUserLogin</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CheckUserLogin</servlet-name>
+		<url-pattern>/checkuserlogin</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>GetMyFiles</servlet-name>
+		<servlet-class>com.cloudprinter.api.GetMyFiles</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetMyFiles</servlet-name>
+		<url-pattern>/getmyfiles</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>GetDeletedFiles</servlet-name>
+		<servlet-class>com.cloudprinter.api.GetDeletedFiles</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetDeletedFiles</servlet-name>
+		<url-pattern>/getdeletedfiles</url-pattern>
+	</servlet-mapping>
+
+
+
+	<servlet>
+		<servlet-name>GetPrintedFiles</servlet-name>
+		<servlet-class>com.cloudprinter.api.GetPrintedFiles</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetPrintedFiles</servlet-name>
+		<url-pattern>/getprintedfiles</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>DeleteFileByApi</servlet-name>
+		<servlet-class>com.cloudprinter.api.DeleteFileByApi</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteFileByApi</servlet-name>
+		<url-pattern>/deletefilebyapi</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>DownloadFileByApi</servlet-name>
+		<servlet-class>com.cloudprinter.api.DownloadFileByApi</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DownloadFileByApi</servlet-name>
+		<url-pattern>/downloadfilebyapi</url-pattern>
+	</servlet-mapping>
+
+	
 
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>

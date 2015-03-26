@@ -5,7 +5,7 @@ public enum PageNumberCustomization {
 	private  String pagenumberCustomization;
 
 	private PageNumberCustomization(String PageNumberCustomization) {
-		this.pagenumberCustomization = pagenumberCustomization;
+		this.pagenumberCustomization = PageNumberCustomization;
 	}
 
 	public String getPageNumberCustomization() {

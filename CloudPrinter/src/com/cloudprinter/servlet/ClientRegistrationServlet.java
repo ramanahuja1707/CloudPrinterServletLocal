@@ -22,7 +22,8 @@ public class ClientRegistrationServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		if (req.getParameter("clientLocation").equals("")
-				|| req.getParameter("clientKey").equals("")) {
+				|| req.getParameter("clientKey").equals("")
+				|| req.getParameter("adminKey").equals("")) {
 			req.setAttribute("clientRegistrationError",
 					"Please Fill all fields...");
 			RequestDispatcher rd = req
@@ -39,8 +40,8 @@ public class ClientRegistrationServlet extends HttpServlet {
 				if (clientList.list().size() == 0) {
 					PrintingClientLoginInfo clientLogin = new PrintingClientLoginInfo();
 					clientLogin.setClientKey(req.getParameter("clientKey"));
-					clientLogin
-							.setClientKey(req.getParameter("clientLocation"));
+					clientLogin.setClientLocation(req
+							.getParameter("clientLocation"));
 					ob.put(clientLogin);
 					req.setAttribute("clientRegistrationError",
 							"Successfully Registered...:-)");

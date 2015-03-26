@@ -7,20 +7,23 @@ import javax.persistence.Id;
 public class PrintingClientLoginInfo {
 
 	@Id
-	String clientLocation;
-	String clientKey;
+	private String clientLocation;
+	private String clientKey;
+
 	public String getClientLocation() {
 		return clientLocation;
 	}
+
 	public void setClientLocation(String clientLocation) {
 		this.clientLocation = clientLocation;
 	}
+
 	public String getClientKey() {
 		return clientKey;
 	}
+
 	public void setClientKey(String clientKey) {
 		this.clientKey = clientKey;
 	}
-	
-	
+
 }

@@ -7,9 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.cloudprinter.enums.FileType;
-import com.cloudprinter.enums.UploadStatus;
-
 @Entity
 public class UploadedFilesInfo {
 

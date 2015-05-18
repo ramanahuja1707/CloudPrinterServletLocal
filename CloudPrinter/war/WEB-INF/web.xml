@@ -244,12 +244,12 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 
 
 	<servlet>
-		<servlet-name>GetDeletedFiles</servlet-name>
-		<servlet-class>com.cloudprinter.api.GetDeletedFiles</servlet-class>
+		<servlet-name>GetDeletedFilesApi</servlet-name>
+		<servlet-class>com.cloudprinter.api.GetDeletedFilesApi</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>GetDeletedFiles</servlet-name>
-		<url-pattern>/getdeletedfiles</url-pattern>
+		<servlet-name>GetDeletedFilesApi</servlet-name>
+		<url-pattern>/getdeletedfilesapi</url-pattern>
 	</servlet-mapping>
 
 
@@ -283,6 +283,47 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<url-pattern>/downloadfilebyapi</url-pattern>
 	</servlet-mapping>
 
+
+	<servlet>
+		<servlet-name>PrintFileByApi</servlet-name>
+		<servlet-class>com.cloudprinter.api.PrintFileByApi</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PrintFileByApi</servlet-name>
+		<url-pattern>/printfilebyapi</url-pattern>
+	</servlet-mapping>
+
+
+
+	<servlet>
+		<servlet-name>BlobUrlGet</servlet-name>
+		<servlet-class>com.cloudprinter.api.BlobUrlGet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BlobUrlGet</servlet-name>
+		<url-pattern>/bloburlget</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>BlobUpload</servlet-name>
+		<servlet-class>com.cloudprinter.api.BlobUpload</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BlobUpload</servlet-name>
+		<url-pattern>/blobupload</url-pattern>
+	</servlet-mapping>
+
+	
+	
+	
+	<servlet>
+		<servlet-name>BlobUploadSaveData</servlet-name>
+		<servlet-class>com.cloudprinter.api.BlobUploadSaveData</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BlobUploadSaveData</servlet-name>
+		<url-pattern>/blobuploadsavedata</url-pattern>
+	</servlet-mapping>
 	
 
 	<welcome-file-list>

@@ -12,7 +12,7 @@
 	<div
 		style="background-image: url(images/bg.jpg); width: 1000px; text-align: center; height: 646px; margin-left: 15%;">
 		<div class="banner">
-						<a href="clientRegistration.jsp"> <img src="images/logo.gif"
+			<a href="clientRegistration.jsp"> <img src="images/logo.gif"
 				class="logo" /></a>
 			<div class="bannertext">Cloud Printing</div>
 			<div class="menu">

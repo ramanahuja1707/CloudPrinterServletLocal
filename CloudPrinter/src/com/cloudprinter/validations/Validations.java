@@ -2,7 +2,6 @@ package com.cloudprinter.validations;
 
 import java.util.ArrayList;
 
-import com.cloudprinter.dto.UserInfo;
 import com.cloudprinter.dto.ValidationErrors;
 
 public class Validations {

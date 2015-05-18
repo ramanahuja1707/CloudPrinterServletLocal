@@ -68,7 +68,7 @@ public class DeleteFileByApi extends HttpServlet {
 					resultGson.setDeletionStatus("success");
 					resultGson.setErrors(new Errors());
 					resultGson.setErrorStatus("no-error");
-					resultGson.setFileStatus("exist");
+					resultGson.setFileStatus("" + "");
 
 					// creating gson object
 					gsonResult = new Gson();

@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.cloudprinter.dto.PrintingClientLoginInfo;
-import com.cloudprinter.dto.UserLoginInfo;
 import com.cloudprinter.startup.ObjectifyRegisterService;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.Query;

@@ -12,6 +12,7 @@ public class DeletedFiles {
 	private String fileId;
 	private String fileDeletionStatus;
 
+	
 	public String getLoginId() {
 		return loginId;
 	}

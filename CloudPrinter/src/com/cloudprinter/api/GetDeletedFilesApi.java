@@ -20,7 +20,7 @@ import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.Query;
 
 @SuppressWarnings("serial")
-public class GetDeletedFiles extends HttpServlet {
+public class GetDeletedFilesApi extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)

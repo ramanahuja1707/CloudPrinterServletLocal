@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.cloudprinter.dto.DeletedFiles;
 import com.cloudprinter.dto.UploadedFilesInfo;
-import com.cloudprinter.dto.UserLoginInfo;
 import com.cloudprinter.enums.DeletedFileStatus;
 import com.cloudprinter.enums.UploadStatus;
 import com.cloudprinter.startup.ObjectifyRegisterService;

@@ -94,6 +94,7 @@ public class CheckUserLogin extends HttpServlet {
 			// converting the object to json by gson and printing on console
 			String resultantGson = gsonResult.toJson(loginResult);
 			out.println(resultantGson);
+
 		}
 	}
 

@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.cloudprinter.dto.PrintedFilesInfo;
-import com.cloudprinter.dto.UploadedFilesInfo;
-import com.cloudprinter.enums.UploadStatus;
 import com.cloudprinter.startup.ObjectifyRegisterService;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.Query;

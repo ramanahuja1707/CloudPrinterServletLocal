@@ -52,8 +52,7 @@ public class UploadFile extends HttpServlet {
 			req.setAttribute("fileUploadStatus",
 					"Error occured , try again after sometime...:-(");
 			resp.getWriter().println(req.getAttribute("fileUploadStatus"));
-			out.println(
-					"<a href='/userHome.jsp'>Go back</a>");
+			out.println("<a href='/userHome.jsp'>Go back</a>");
 			// resp.getWriter().println(req.getAttribute("fileUploadStatus"));
 			/*
 			 * RequestDispatcher rd = req
@@ -84,8 +83,7 @@ public class UploadFile extends HttpServlet {
 				req.setAttribute("fileUploadStatus",
 						"File Uploaded Successfully...:-)");
 				resp.getWriter().println(req.getAttribute("fileUploadStatus"));
-				out.println(
-						"<a href='/userHome.jsp'>Go back</a>");
+				out.println("<a href='/userHome.jsp'>Go back</a>");
 				// resp.sendRedirect("/uploadFiles.jsp");
 				/*
 				 * RequestDispatcher rd = req
@@ -101,8 +99,7 @@ public class UploadFile extends HttpServlet {
 
 				blobstoreService.delete(blobKeys.get(0));
 				resp.getWriter().println(req.getAttribute("fileUploadStatus"));
-				out.println(
-						"<a href='/userHome.jsp'>Go back</a>");
+				out.println("<a href='/userHome.jsp'>Go back</a>");
 				// resp.sendRedirect("/uploadFiles.jsp");
 				/*
 				 * RequestDispatcher rd = req

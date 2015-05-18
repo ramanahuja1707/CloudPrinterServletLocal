@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.cloudprinter.dto.UploadedFilesInfo;
-import com.cloudprinter.dto.UserInfo;
 import com.cloudprinter.dto.UserLoginInfo;
 import com.cloudprinter.dto.ValidationErrors;
 import com.cloudprinter.services.AuthenticateUserService;
